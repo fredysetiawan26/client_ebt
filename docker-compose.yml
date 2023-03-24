@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  raspi_kirim:
+    build: 
+      context: ./app
+    restart: always
+    volumes:
+      - ./app:/app
+    privileged: true
+    devices:
+      # - /dev/serial/by-path/platform-3f980000.usb-usb-0:1.2:1.0-port0:/dev/ttyUSBAC
+      # - /dev/serial/by-path/platform-3f980000.usb-usb-0:1.4:1.0-port0:/dev/ttyUSBDC
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyUSB1:/dev/ttyUSB1
+      - /dev/ttyUSBDC:/dev/ttyUSBDC
+      - /dev/ttyUSBAC:/dev/ttyUSBAC
+
